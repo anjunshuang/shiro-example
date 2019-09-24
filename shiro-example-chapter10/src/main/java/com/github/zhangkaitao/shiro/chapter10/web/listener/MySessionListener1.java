@@ -12,15 +12,15 @@ public class MySessionListener1 implements SessionListener {
 
     @Override
     public void onStart(Session session) {//会话创建时触发
-        System.out.println("会话创建：" + session.getId());
+        System.out.println("会话创建：create = " + session.getId());
     }
     @Override
     public void onExpiration(Session session) {//会话过期时触发
-        System.out.println("会话过期：" + session.getId());
+        System.out.println("会话过期：expiration = " + session.getId());
     }
     @Override
     public void onStop(Session session) {//退出/会话停止时触发
-        System.out.println("会话停止：" + session.getId());
+        System.out.println("会话停止：stop = " + session.getId());
     }
 
 }
