@@ -45,7 +45,9 @@ public class MySessionDAO extends CachingSessionDAO {
     protected Session doReadSession(Serializable sessionId) {
         String sql = "select session from sessions where id=?";
         List<String> sessionStrList = jdbcTemplate.queryForList(sql, String.class, sessionId);
-        if(sessionStrList.size() == 0) return null;
+        if(sessionStrList.size() == 0) {
+            return null;
+        }
         return SerializableUtils.deserialize(sessionStrList.get(0));
     }
 }

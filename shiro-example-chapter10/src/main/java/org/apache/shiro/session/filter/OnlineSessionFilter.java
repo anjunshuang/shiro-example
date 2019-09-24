@@ -72,6 +72,7 @@ public class OnlineSessionFilter extends AccessControlFilter {
     }
 
 
+    @Override
     protected void redirectToLogin(ServletRequest request, ServletResponse response) throws IOException {
         WebUtils.issueRedirect(request, response, getForceLogoutUrl());
     }
