@@ -19,7 +19,7 @@ public class MySessionListener1 implements SessionListener {
         System.out.println("会话过期：" + session.getId());
     }
     @Override
-    public void onStop(Session session) {//退出/会话过期时触发
+    public void onStop(Session session) {//退出/会话停止时触发
         System.out.println("会话停止：" + session.getId());
     }
 
