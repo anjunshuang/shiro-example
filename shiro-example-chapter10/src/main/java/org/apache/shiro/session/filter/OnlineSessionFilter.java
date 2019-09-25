@@ -45,6 +45,7 @@ public class OnlineSessionFilter extends AccessControlFilter {
 
     @Override
     protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
+        System.out.println("OnlineSessionFilter isAccessAllowed...");
         Subject subject = getSubject(request, response);
         if (subject == null || subject.getSession(false) == null) {
             return true;
@@ -63,6 +64,7 @@ public class OnlineSessionFilter extends AccessControlFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) throws Exception {
+        System.out.println("OnlineSessionFilter onAccessDenied...");
         Subject subject = getSubject(request, response);
         if (subject != null) {
             subject.logout();
@@ -74,6 +76,7 @@ public class OnlineSessionFilter extends AccessControlFilter {
 
     @Override
     protected void redirectToLogin(ServletRequest request, ServletResponse response) throws IOException {
+        System.out.println("OnlineSessionFilter redirectToLogin...");
         WebUtils.issueRedirect(request, response, getForceLogoutUrl());
     }
 

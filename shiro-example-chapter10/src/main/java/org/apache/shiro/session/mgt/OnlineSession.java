@@ -127,6 +127,7 @@ public class OnlineSession extends SimpleSession {
      * @since 1.0
      */
     private void writeObject(ObjectOutputStream out) throws IOException {
+        System.out.println("OnlineSession writeObject...");
         out.defaultWriteObject();
         short alteredFieldsBitMask = getAlteredFieldsBitMask();
         out.writeShort(alteredFieldsBitMask);
@@ -149,6 +150,7 @@ public class OnlineSession extends SimpleSession {
      */
     @SuppressWarnings({"unchecked"})
     private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        System.out.println("OnlineSession readObject...");
         in.defaultReadObject();
         short bitMask = in.readShort();
 
@@ -169,6 +171,7 @@ public class OnlineSession extends SimpleSession {
      * @since 1.0
      */
     private short getAlteredFieldsBitMask() {
+        System.out.println("OnlineSession getAlteredFieldsBitMask...");
         int bitMask = 0;
         bitMask = userAgent != null ? bitMask | USER_AGENT_BIT_MASK : bitMask;
         bitMask = status != null ? bitMask | STATUS_BIT_MASK : bitMask;
@@ -188,6 +191,7 @@ public class OnlineSession extends SimpleSession {
      * @since 1.0
      */
     private static boolean isFieldPresent(short bitMask, int fieldBitMask) {
+        System.out.println("OnlineSession isFieldPresent...");
         return (bitMask & fieldBitMask) != 0;
     }
 }

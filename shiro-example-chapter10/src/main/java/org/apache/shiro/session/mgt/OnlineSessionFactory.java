@@ -24,6 +24,7 @@ public class OnlineSessionFactory implements SessionFactory {
 
     @Override
     public Session createSession(SessionContext initData) {
+        System.out.println("OnlineSessionFactory createSession...");
         OnlineSession session = new OnlineSession();
         if (initData != null && initData instanceof WebSessionContext) {
             WebSessionContext sessionContext = (WebSessionContext) initData;

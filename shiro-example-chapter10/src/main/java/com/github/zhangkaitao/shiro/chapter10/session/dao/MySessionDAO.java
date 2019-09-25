@@ -22,6 +22,7 @@ public class MySessionDAO extends CachingSessionDAO {
 
     @Override
     protected Serializable doCreate(Session session) {
+        System.out.println("MySessionDAO doCreate...");
         Serializable sessionId = generateSessionId(session);
         assignSessionId(session, sessionId);
         String sql = "insert into sessions(id, session) values(?,?)";
@@ -30,6 +31,7 @@ public class MySessionDAO extends CachingSessionDAO {
     }
     @Override
     protected void doUpdate(Session session) {
+        System.out.println("MySessionDAO doUpdate....");
         if(session instanceof ValidatingSession && !((ValidatingSession)session).isValid()) {
             return; //如果会话过期/停止 没必要再更新了
         }
@@ -38,11 +40,13 @@ public class MySessionDAO extends CachingSessionDAO {
     }
     @Override
     protected void doDelete(Session session) {
+        System.out.println("MySessionDAO doDelete...");
         String sql = "delete from sessions where id=?";
         jdbcTemplate.update(sql, session.getId());
     }
     @Override
     protected Session doReadSession(Serializable sessionId) {
+        System.out.println("MySessionDAO doReadSession...");
         String sql = "select session from sessions where id=?";
         List<String> sessionStrList = jdbcTemplate.queryForList(sql, String.class, sessionId);
         if(sessionStrList.size() == 0) {

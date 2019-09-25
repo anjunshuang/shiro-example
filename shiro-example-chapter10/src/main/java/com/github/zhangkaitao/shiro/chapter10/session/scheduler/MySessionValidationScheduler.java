@@ -56,6 +56,7 @@ public class MySessionValidationScheduler implements SessionValidationScheduler,
 
     @Override
     public boolean isEnabled() {
+        System.out.println("MySessionValidationScheduler isEnabled...");
         return this.enabled;
     }
 
@@ -67,6 +68,7 @@ public class MySessionValidationScheduler implements SessionValidationScheduler,
     // (so we don't have to change the unit test execution model for the core module)
     @Override
     public void enableSessionValidation() {
+        System.out.println("MySessionValidationScheduler enableSessionValidation...");
         if (this.interval > 0l) {
             this.service = Executors.newSingleThreadScheduledExecutor(new ThreadFactory() {
                 public Thread newThread(Runnable r) {
@@ -82,6 +84,7 @@ public class MySessionValidationScheduler implements SessionValidationScheduler,
 
     @Override
     public void run() {
+        System.out.println("MySessionValidationScheduler run...");
         if (log.isDebugEnabled()) {
             log.debug("Executing session validation...");
         }
@@ -115,6 +118,7 @@ public class MySessionValidationScheduler implements SessionValidationScheduler,
 
     @Override
     public void disableSessionValidation() {
+        System.out.println("MySessionValidationScheduler disableSessionValidation...");
         this.service.shutdownNow();
         this.enabled = false;
     }

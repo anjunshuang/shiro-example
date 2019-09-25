@@ -12,6 +12,6 @@ import org.apache.shiro.session.SessionListenerAdapter;
 public class MySessionListener2 extends SessionListenerAdapter {
     @Override
     public void onStart(Session session) {//只想监听某一个事件
-        System.out.println("会话创建：createOn = " + session.getId());
+        System.out.println("会话创建：MySessionListener2 onStart = " + session.getId());
     }
 }
