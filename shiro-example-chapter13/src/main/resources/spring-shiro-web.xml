@@ -30,6 +30,8 @@
         <property name="authorizationCacheName" value="authorizationCache"/>
     </bean>
 
+
+
     <!-- 会话ID生成器 -->
     <bean id="sessionIdGenerator" class="org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator"/>
 

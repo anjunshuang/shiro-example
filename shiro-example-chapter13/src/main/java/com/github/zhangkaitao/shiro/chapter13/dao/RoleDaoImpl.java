@@ -16,6 +16,7 @@ import java.sql.SQLException;
  */
 public class RoleDaoImpl extends JdbcDaoSupport implements RoleDao {
 
+    @Override
     public Role createRole(final Role Role) {
         final String sql = "insert into sys_roles(role, description, available) values(?,?,?)";
 
@@ -35,6 +36,7 @@ public class RoleDaoImpl extends JdbcDaoSupport implements RoleDao {
         return Role;
     }
 
+    @Override
     public void deleteRole(Long roleId) {
         //首先把和role关联的相关表数据删掉
         String sql = "delete from sys_users_roles where role_id=?";
